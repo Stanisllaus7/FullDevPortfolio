@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0%;
+}
+
+header {
+    width: 100%;
+    min-height: 75px;
+    background-color: lightgray;
+    line-height: 75px;
+    border: 2px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-color: gray;
+    word-spacing: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#navBarRight {
+    margin-left: 25px;
+}
+
+#indexMain {
+    text-align: center;
+}
+
+#HtmlDiv {
+    
+}
+
+a {
+    margin-right: 45px;
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+a:hover {
+    color: gray;
+}
+
+a.active {
+    text-decoration: underline;
+    text-decoration-color: darkgray;
+}
+
+a.gmail {
+    font-size: 19px;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    border: 1px solid;
+    background-color: lightgray;
+}
+
+main {
+    margin-top: 15px;
+    min-height: 786px;;
+    font-size: 50px;
+}
+
+#HTMLLogo {
+    width: 150px;
+}
+
+b {
+    font-size: 20px;
+}
+
