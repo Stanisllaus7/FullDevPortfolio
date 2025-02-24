@@ -24,7 +24,7 @@ window.addEventListener("load", () => {
             console.log('dataRetrieved', data);
             let mainSkills = document.getElementById("skillsMain")
             for (let i = 0; i < data.length; i++) {
-                let element = document.createElement(div);
+                let element = document.createElement('div');
                 mainSkills.innerHTML += `
                 <div class="skill">
                 <div class="skill-photo"> </div>
