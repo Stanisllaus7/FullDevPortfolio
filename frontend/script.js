@@ -28,7 +28,7 @@ window.addEventListener("load", () => {
                 mainSkills.innerHTML += `
                 <div class="skill">
                 <div class="skill-photo"> </div>
-                <div class="skill-text"> </div> 
+                <div class="skill-text"> </div>
                 </div>
                 `
 
