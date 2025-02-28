@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const Skill = require("./models/skill"); 
+const Skill = require("./models/skill");
+const Project = require("./models/project"); 
 
 const app = express();
 app.use(cors());
@@ -28,6 +29,17 @@ app.get("/skills", async (req, res) => {
     res.json(skills);
   } catch (error) {
     res.status(500).json({ message: "Fout bij ophalen van skills", error });
+  }
+});
+
+
+// API PROJECTS
+app.get("/projects", async (req, res) => {
+  try {
+    const projects = await Project.find(); // Haal alle records op
+    res.json(projects);
+  } catch (error) {
+    res.status(500).json({ message: "Fout bij ophalen van projects", error });
   }
 });
 

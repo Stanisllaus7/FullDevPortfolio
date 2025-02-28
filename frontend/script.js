@@ -24,39 +24,20 @@ window.addEventListener("load", () => {
             console.log('dataRetrieved', data);
             let mainSkills = document.getElementById("skillsMain")
             for (let i = 0; i < data.length; i++) {
-<<<<<<< HEAD
-                let element = document.createElement(div);
-                mainSkills.innerHTML += `
-                <div class="skill">
-                <div class="skill-photo"> </div>
-                <div class="skill-text"> </div> 
-=======
-                let element = document.createElement('div');
-                mainSkills.innerHTML += `
-                <div class="skill">
-                <div class="skill-photo"> </div>
-                <div class="skill-text"> </div>
->>>>>>> new_branch
-                </div>
-                `
-
-
-
-               /* if(i%2 == 1) { // hiet zullen mijn skills rechts staan
-                    let skill = data[i];
-                    mainSkills.innerHTML += `
-                    <div id="inTheRight"> 
-                    ${skill.naam}
-                    </div>
-                    `    
-                } else { // hier links
-                    let skill = data[i];
-                    mainSkills.innerHTML += `
-                    <div id="inTheLeft">
-                    ${skill.naam}
-                    </div>       
-                `
-                } */
+                let element = document.createElement("div");
+                element.classList.add('skill');
+                let txt = document.createElement("div");
+                let pct = document.createElement("div");
+                txt.classList.add('skill-text');
+                txt.innerHTML = `<p>${data[i].dsc}</p>`;
+                pct.classList.add('skill-photo');
+                pct.style.backgroundImage = `url('${data[i].img}')`;
+    
+                console.log(element);
+                element.append(txt);
+                element.append(pct);
+                mainSkills.append(element);
+                
             }            
 
         })
@@ -66,7 +47,20 @@ window.addEventListener("load", () => {
         });
 
 
+        // Test Database projects
+
+        fetch("http://localhost:5000/projects")
+        .then(response => response.json())
+        .then(data => {
+            console.log('dataRetrieved - projects', data);
+            
+        })
+        .catch(error => {
+            console.error("Fout bij ophalen van projects data:", error);
+        });
+
+
         console.log("Hello");
-        let js = document.getElementById("JS");
+        
         
 });
