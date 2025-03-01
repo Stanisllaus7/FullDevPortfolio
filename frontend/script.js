@@ -37,9 +37,18 @@ window.addEventListener("load", () => {
                 element.append(txt);
                 element.append(pct);
                 mainSkills.append(element);
+
                 
             }            
-
+            
+            for (let i = 0; i < data.length; i++) {
+                mainSkills.innerHTML += `
+                <p>${data[i].naam}</p>
+                <div class="skill-bar">
+                <div class="skill-percentage" a="${(data[i].level)*10}%" style="width:${(data[i].level)*10}%"></div>
+                </div>
+                `
+                }
         })
         .catch(error => {
             console.error("Fout bij ophalen van skil data:", error);
@@ -53,6 +62,10 @@ window.addEventListener("load", () => {
         .then(response => response.json())
         .then(data => {
             console.log('dataRetrieved - projects', data);
+            let mainProjects = document.getElementById("mainProjects");
+            for (let i = 0; i < data.length; i++) {
+                
+            }
             
         })
         .catch(error => {
