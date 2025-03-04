@@ -22,6 +22,9 @@ window.addEventListener("load", () => {
         .then(response => response.json())
         .then(data => {
             console.log('dataRetrieved', data);
+
+            // creating review of my skills
+
             let mainSkills = document.getElementById("skillsMain")
             for (let i = 0; i < data.length; i++) {
                 let element = document.createElement("div");
@@ -39,17 +42,47 @@ window.addEventListener("load", () => {
                 mainSkills.append(element);
 
                 
-            }            
-            
-            for (let i = 0; i < data.length; i++) {
-                mainSkills.innerHTML += `
-                <p>${data[i].naam}</p>
-                <div class="skill-bar">
-                <div class="skill-percentage" a="${(data[i].level)*10}%" style="width:${(data[i].level)*10}%"></div>
-                </div>
-                `
+            }           
+
+
+            // creating skill bars
+
+            let element2 = document.createElement("div"); // div where will be my div with skill-bars
+            let element3 = document.createElement("div"); // div with skill bars
+            element2.classList.add('bar');
+            element3.classList.add('bar-bar');
+            console.log(element2);
+            for (let i = 0; i < data.length; i++) { 
+                let bar = document.createElement("li");
+                bar.classList.add('bar-item');
+                bar.innerHTML = `<h3>${data[i].naam}</h3><span class="barSpan"><span class="${data[i].naam}" style="width: ${(data[i].level)*10}%; animation: ${data[i].naam} 3s;"></span></span>`;
+                element3.append(bar);
+                element2.append(element3);
+                mainSkills.append(element2);
+
+                // function to add style and animate skill-bars (adding keyframes (animation))
+                function addKeyFrames() {
+                    let styleSheet = document.createElement("style");
+                    styleSheet.type = "text/css";
+                    styleSheet.innerHTML = `
+                        @keyframes ${data[i].naam}{ 
+                            0%{
+                                width: 0%;
+                            }
+                            100%{
+                                width: ${(data[i].level)*10}%;
+                            }
+                        }
+                    `
+                    document.head.appendChild(styleSheet);
+                }
+
+                addKeyFrames(); 
+               
+
                 }
         })
+
         .catch(error => {
             console.error("Fout bij ophalen van skil data:", error);
             //document.getElementById("message").innerText = "Fout bij laden van gegevens.";
