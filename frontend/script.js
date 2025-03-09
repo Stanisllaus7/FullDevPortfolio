@@ -95,43 +95,46 @@ window.addEventListener("load", () => {
         .then(response => response.json())
         .then(data => {
             console.log('dataRetrieved - projects', data);
+
+            // Creating overview of my projects 
             let mainProjects = document.getElementById("mainProjects");
             let currentProject = 0;
 
-            showProject();
+            showProject(); // creates first project
             
+            // checks what project you are looking at at the moment and based on this edits buttons
             function switchPorjects() {
 
                 buttonLeft = document.getElementById("arrowLeft");
                 buttonRight = document.getElementById("arrowRight");
-                if(currentProject == 0) {
+                if(currentProject == 0) { // if current project is the first one - disables the left button
                     buttonLeft.disabled = true;
                     buttonRight.disabled = false;
                     buttons();
-                } else if (currentProject == (data.length)-1){
+                } else if (currentProject == (data.length)-1){ // If current project is the last one - disables the right button
                     
                     buttonRight.disabled = true;
                     buttonLeft.disabled = false;
                     buttons();
-                } else {
+                } else { // enables both buttons
                     buttonLeft.disabled = false;
                     buttonRight.disabled = false;
                     buttons();
                 }
                 
+                // Even listeners to buttons
                 function buttons() {
                     console.log("Current project is " + currentProject + " and this is project number " + data.length);
                     buttonRight.addEventListener('click', () => {
                         currentProject++;
-                        console.log("RIght button is clicked!");
+                        console.log("RIght button is clicked!"); // test if works
                         console.log(currentProject);
                         showProject();
                     });
 
-                    console.log("You are between buttons")
                     buttonLeft.addEventListener('click', () => {
                         currentProject--;
-                        console.log("Left button is clicked!");
+                        console.log("Left button is clicked!"); // test if works
                         console.log(currentProject);
                         showProject();
                     });
@@ -139,6 +142,7 @@ window.addEventListener("load", () => {
                 }
             }
 
+            // Project overview
             function showProject() {
                     console.log("You are in function and current project is " + currentProject);
                         mainProjects.innerHTML = `
