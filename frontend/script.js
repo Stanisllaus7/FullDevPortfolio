@@ -96,9 +96,75 @@ window.addEventListener("load", () => {
         .then(data => {
             console.log('dataRetrieved - projects', data);
             let mainProjects = document.getElementById("mainProjects");
-            for (let i = 0; i < data.length; i++) {
+            let currentProject = 0;
+
+            showProject();
+            
+            function switchPorjects() {
+
+                buttonLeft = document.getElementById("arrowLeft");
+                buttonRight = document.getElementById("arrowRight");
+                if(currentProject == 0) {
+                    buttonLeft.disabled = true;
+                    buttonRight.disabled = false;
+                    buttons();
+                } else if (currentProject == (data.length)-1){
+                    
+                    buttonRight.disabled = true;
+                    buttonLeft.disabled = false;
+                    buttons();
+                } else {
+                    buttonLeft.disabled = false;
+                    buttonRight.disabled = false;
+                    buttons();
+                }
                 
+                function buttons() {
+                    console.log("Current project is " + currentProject + " and this is project number " + data.length);
+                    buttonRight.addEventListener('click', () => {
+                        currentProject++;
+                        console.log("RIght button is clicked!");
+                        console.log(currentProject);
+                        showProject();
+                    });
+
+                    console.log("You are between buttons")
+                    buttonLeft.addEventListener('click', () => {
+                        currentProject--;
+                        console.log("Left button is clicked!");
+                        console.log(currentProject);
+                        showProject();
+                    });
+                
+                }
             }
+
+            function showProject() {
+                    console.log("You are in function and current project is " + currentProject);
+                        mainProjects.innerHTML = `
+                        <div class="project">
+                            <h1 class="projectName">${data[currentProject].naam}</h1>
+                        
+                        <div class="projectDiv">
+                            <div class="projectDivLeft">
+                                <h3 class="projectType">${data[currentProject].type}</h3>
+                                <p class="projectDsc">${data[currentProject].dsc}</p>
+                            </div>
+                            <div class="projectPhoto" style="background-image: url(${data[currentProject].img});">
+                                
+                            </div>
+    
+                        </div>   
+                        <div class="buttons">
+                            <button id="arrowLeft"> <
+                            <button id="arrowRight"> >
+                        </div>
+    
+                        </div>
+                        `
+                        switchPorjects();
+            }
+            console.log("You are outise the function");
             
         })
         .catch(error => {
