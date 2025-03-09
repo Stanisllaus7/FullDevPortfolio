@@ -139,7 +139,12 @@ p {
 }
 
 h3 {
+    color: var(--textColor);
     font-size: 40px;
+}
+
+h2 {
+    color: var(--textColor);
 }
 
 #myImage {
